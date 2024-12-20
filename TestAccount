@@ -1,0 +1,139 @@
+import java.io.*;
+import java.util.*;
+
+class Account
+{
+    
+int acc_no;
+String name;
+float amount;
+
+
+//Method to initialize object
+
+        public void insert (int a,String n,float amt)
+        {
+            
+        acc_no  =  a;
+        name  =  n;
+        amount =  amt;
+        }
+        
+                
+        //deposit method
+                
+        void deposit(float amt)
+        {
+        amount=amount+amt;
+        
+        System.out.println();
+        System.out.println(amt+" deposited");
+        
+        }
+
+
+            //withdraw method
+            public void withdraw(float amt)
+            {
+            if(amount<amt)
+            {
+            System.out.println();
+            System.out.println("Insufcient Balance");
+            }
+            else {
+            amount=amount-amt;
+            System.out.println();
+            System.out.println(amt+" withdrawn");
+            
+            }
+            
+            }
+
+            //method to check the balance of the account
+            
+            public void checkBalance()
+            {
+                System.out.println();
+                System.out.println("Balance is: "+amount);}
+            
+            //method to display the values of an object
+            
+            public void display()
+            {
+                System.out.println(" Account Number : " + acc_no);
+                System.out.println(" User Name : "+name);
+                System.out.println("Available Balance : "+amount);
+                
+            }
+            }
+            
+                        
+            //Creating a test class to deposit and withdraw amount
+             public class TestAccount
+             {
+                public static void main(String[] args)
+                {
+                Account a1=new Account();
+            
+                Scanner reader = new Scanner(System.in);
+            
+                System.out.println("Enter Your Account Number: ");    
+                int acc_no = reader.nextInt();     //Taking input in class parameters in through object 
+                System.out.println("Enter Your Profile Name: ");
+                String name = reader.next();
+                System.out.println("Enter Amount: ");
+                float amount = reader.nextFloat();
+                
+                
+    
+    
+    
+               a1.insert(acc_no, name, amount);
+    
+                while (true)
+                {
+                
+                    System.out.println();
+                    System.out.println();
+                     System.out.println("Press 1 to check Balance ");
+                     System.out.println("Press 2 to Deposit ");
+                     System.out.println("Press 3 to Withdraw ");
+                     System.out.println("Press 4 to Account Information ");
+                     System.out.println("Press 5 to Exit ");
+                     
+                     System.out.println("Enter Your choice: ");    
+                     int choice = reader.nextInt();
+             
+             
+                     
+          if (choice ==5)
+            break;
+        
+        
+         switch (choice) 
+         {
+             case 1 : a1.checkBalance();
+             break;
+             
+             case 2:  System.out.println("Enter Amount to be deposited : ");
+                        float amount_deposit = reader.nextFloat();
+                        a1.deposit(amount_deposit);
+                        a1.checkBalance();
+                        break;
+                        
+            case 3: System.out.println("Enter Amount to be withdrawn : ");
+                       float amount_withdraw = reader.nextFloat();
+                       a1.withdraw(amount_withdraw);
+                        a1.checkBalance();
+                        
+            case 4: a1.display();
+            
+            case 5: break; 
+            
+            default : System.out.println("Invalid choice ");
+                       
+                        
+         }
+    }
+
+}}
